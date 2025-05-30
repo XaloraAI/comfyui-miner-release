@@ -1,4 +1,4 @@
-## ComfyUI Service
+***## ComfyUI Service
 
 Virtual ComfyUI service that can be imported and run inside a python process. This project consists of two parts: a Docker-based ComfyUI service and a Python miner script that interacts with a task server.
 
@@ -16,7 +16,7 @@ Virtual ComfyUI service that can be imported and run inside a python process. Th
 ## Method 1: Docker Compose (Recommended)
 1. Clone the repository:
 ```bash
-git clone https://github.com/heurist-network/comfyui-miner-release.git
+git clone https://github.com/Xalora-network/comfyui-miner-release.git
 cd comfyui-miner-release
 ```
 2. Create a .env file in the project root with your configuration:
@@ -93,7 +93,7 @@ sudo chown -R $(whoami) ./
 ```
 5. Pull the Docker image:
 ```
-docker pull heuristai/comfyui-service:latest
+docker pull Xaloraai/comfyui-service:latest
 ```
 6. Run the ComfyUI container:
 ```
@@ -104,7 +104,7 @@ docker run -d \
   -v /tmp:/tmp \
   --env-file .env \
   --name comfyui-container \
-  heuristai/comfyui-service:latest
+Xaloraai/comfyui-service:latest
 ```
 7. Running the Miner
 ```
