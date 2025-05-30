@@ -1,0 +1,29 @@
+{
+    "comfyui": "1419dee9156051aed322c55c7ad8b14fddb7d2d3",
+    "git_custom_nodes": {
+        "https://github.com/ltdrdata/ComfyUI-Manager.git": {
+            "hash": "95868c071baaa73811edad83401af643577db5c8",
+            "disabled": false
+        },
+        "https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite": {
+            "hash": "9700a6c0bfe6f96ff7a616c0b524df1f39413168",
+            "disabled": false
+        },
+        "https://github.com/shiimizu/ComfyUI-TiledDiffusion": {
+            "hash": "448e961d8289779eeef9045c1cf7ef438e3a2a7b",
+            "disabled": false
+        }
+    },
+    "file_custom_nodes": [
+        {
+            "filename": "websocket_image_save.py",
+            "disabled": false
+        }
+    ],
+    "downloads": {
+        "models/diffusion_models/hunyuan_video_t2v_720p_bf16.safetensors": "https://files.heurist.xyz/hunyuan_video_t2v_720p_bf16.safetensors",
+        "models/text_encoders/clip_l.safetensors": "https://files.heurist.xyz/clip_l.safetensors",
+        "models/text_encoders/llava_llama3_fp8_scaled.safetensors": "https://files.heurist.xyz/llava_llama3_fp8_scaled.safetensors",
+        "models/vae/hunyuan_video_vae_bf16.safetensors": "https://files.heurist.xyz/hunyuan_video_vae_bf16.safetensors"
+    }
+}

@@ -1,0 +1,38 @@
+# Core ML/DL
+torch>=2.5.1
+torchsde
+transformers>=4.47.0
+diffusers>=0.31.0
+accelerate>=1.2.1
+safetensors>=0.4.2
+tokenizers>=0.21.0
+einops>=0.8.0
+jax>=0.4.28
+sentencepiece>=0.2.0
+huggingface-hub>=0.24.5
+xformers>=0.0.27.post2
+
+# Image and Audio Processing
+Pillow>=9.5.0
+opencv-python>=4.9.0
+imageio>=2.34.0
+imageio-ffmpeg>=0.5.1
+kornia>=0.7.1
+spandrel
+soundfile
+av>=13.1.0
+
+# Data Science & Scientific Computing
+pandas>=2.0.3
+scipy>=1.14.0
+numpy>=1.24.4
+ray>=2.37.0
+
+# Utilities & System
+tqdm>=4.66.2
+PyYAML>=6.0.1
+loguru>=0.7.2
+addict>=2.4.0
+psutil
+aiohttp
+gradio>=5.0.0

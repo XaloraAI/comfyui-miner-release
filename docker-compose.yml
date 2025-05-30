@@ -1,0 +1,74 @@
+version: '3.8'
+
+services:
+  comfyui:
+    build:
+      context: .
+      dockerfile: dockerfile/Dockerfile.comfyui
+    image: heuristai/comfyui-release:comfyui-${VERSION:-latest}
+    restart: on-failure:3
+    container_name: comfyui-container-gpu${GPU_DEVICE_ID:-0}-${COMFYUI_PORT:-8188}
+    runtime: nvidia
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: [ '${GPU_DEVICE_ID:-0}' ]
+              capabilities: [ gpu ]
+    volumes:
+      - comfyui_code:/root/ComfyUI
+      - comfyui_models:/root/ComfyUI/models
+      - comfyui_custom_nodes:/root/ComfyUI/custom_nodes
+      - /tmp:/tmp
+    environment:
+      - COMFYUI_PORT=${COMFYUI_PORT:-8188}
+    network_mode: "host"
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://127.0.0.1:${COMFYUI_PORT:-8188}/object_info" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  miner:
+    build:
+      context: .
+      dockerfile: dockerfile/Dockerfile.miner
+    image: heuristai/comfyui-release:miner-${VERSION:-latest}
+    restart: unless-stopped
+    container_name: miner-gpu${GPU_DEVICE_ID:-0}-${COMFYUI_PORT:-8188}
+    runtime: nvidia
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: [ '${GPU_DEVICE_ID:-0}' ]
+              capabilities: [ gpu ]
+    volumes:
+      - ./:/app/miner
+      - comfyui_code:/root/ComfyUI
+      - comfyui_models:/root/ComfyUI/models
+      - comfyui_custom_nodes:/root/ComfyUI/custom_nodes
+      - ./logs:/app/miner/logs
+    command: python3 /app/miner/comfyui_miner.py
+    environment:
+      - COMFYUI_PORT=${COMFYUI_PORT:-8188}
+      - ERC20_ADDRESS=${ERC20_ADDRESS}
+      - WORKFLOW_NAMES=${WORKFLOW_NAMES}
+    network_mode: "host"
+    depends_on:
+      comfyui:
+        condition: service_healthy
+
+volumes:
+  comfyui_code:
+    name: comfyui-miner-release_comfyui_code
+    external: true
+  comfyui_models:
+    name: comfyui-miner-release_comfyui_models
+    external: true
+  comfyui_custom_nodes:
+    name: comfyui-miner-release_comfyui_custom_nodes
+    external: true

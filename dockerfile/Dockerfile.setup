@@ -1,0 +1,30 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Install git
+RUN apt-get update && apt-get install -y \
+    git \
+    && rm -rf /var/lib/apt/lists/*
+
+# Clone the miner repository
+RUN git clone https://github.com/heurist-network/comfyui-miner-release.git /app/miner
+
+# Install pip dependencies
+WORKDIR /app/miner 
+RUN pip install -r requirements-miner.txt
+
+# Update comfyui_home path
+RUN sed -i 's|comfyui_home = "./ComfyUI"|comfyui_home = "/root/ComfyUI"|g' config.toml
+
+WORKDIR /app/miner/comfyui_service
+ENTRYPOINT [ "sh", "-c", \
+    "if [ -z \"$WORKFLOW_NAMES\" ]; then \
+        echo 'Using default workflows from config.toml' && \
+        python -u install.py; \
+    else \
+        echo 'Installing specified workflows: '$WORKFLOW_NAMES && \
+        sed -i \"s|workflow_names = .*|workflow_names = [\\\"$(echo $WORKFLOW_NAMES | sed 's/,/\\\",\\\"/g')\\\"]|g\" ../config.toml && \
+        python -u install.py; \
+    fi" \
+]

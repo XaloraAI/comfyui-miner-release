@@ -1,0 +1,53 @@
+{
+    "comfyui": "1419dee9156051aed322c55c7ad8b14fddb7d2d3",
+    "git_custom_nodes": {
+        "https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes": {
+            "hash": "d78b780ae43fcf8c6b7c6505e6ffb4584281ceca",
+            "disabled": false
+        },
+        "https://github.com/kijai/ComfyUI-KJNodes": {
+            "hash": "7c1228a5a3861e0ad4c5bf68aa8360935022b587",
+            "disabled": false
+        },
+        "https://github.com/pythongosssss/ComfyUI-Custom-Scripts": {
+            "hash": "626e001a20c4a6ad8f987153538d7ff750cb2850",
+            "disabled": false
+        },
+        "https://github.com/ltdrdata/ComfyUI-Manager.git": {
+            "hash": "979a03984768e48e03a9dcb416ae0803491f5bba",
+            "disabled": false
+        },
+        "https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite": {
+            "hash": "9700a6c0bfe6f96ff7a616c0b524df1f39413168",
+            "disabled": false
+        },
+        "https://github.com/ltdrdata/ComfyUI-Inspire-Pack": {
+            "hash": "eab0b95df51975df6fdbf691bb0d4bac2e9adb16",
+            "disabled": false
+        },
+        "https://github.com/shiimizu/ComfyUI-TiledDiffusion": {
+            "hash": "448e961d8289779eeef9045c1cf7ef438e3a2a7b",
+            "disabled": false
+        },
+        "https://github.com/yolain/ComfyUI-Easy-Use": {
+            "hash": "2269e2795233d2abb55e6a9acfdf2978bede8508",
+            "disabled": false
+        },
+        "https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved": {
+            "hash": "f9e0343f4c4606ee6365a9af4a7e16118f1c45e1",
+            "disabled": false
+        }
+    },
+    "file_custom_nodes": [
+        {
+            "filename": "websocket_image_save.py",
+            "disabled": false
+        }
+    ],
+    "downloads": {
+        "models/diffusion_models/mochi_preview_fp8_scaled.safetensors": "https://files.heurist.xyz/mochi_preview_fp8_scaled.safetensors",
+        "models/clip/t5xxl_fp8_e4m3fn_scaled.safetensors": "https://files.heurist.xyz/t5xxl_fp8_e4m3fn_scaled.safetensors",
+        "models/vae/mochi_vae.safetensors": "https://files.heurist.xyz/mochi_vae.safetensors",
+        "models/animatediff_models/sd15_t2v_beta.ckpt": "https://files.heurist.xyz/sd15_t2v_beta.ckpt"
+    }
+}
